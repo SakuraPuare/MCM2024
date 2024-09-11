@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d} % 加载3d库以便使用一些3D效果
+
+\begin{document}
+
+\begin{figure}
+    \centering
+    \tdplotsetmaincoords{70}{110}
+
+    \begin{tikzpicture}[tdplot_main_coords]
+        \node at (0,0,0.5) {$O$}[above];
+
+        \draw[->] (0,0,0) -- (4,0,0) node[above] {$\xi$};
+        \draw[->] (0,0,0) -- (0,5,0) node[right] {$\eta$};
+        \draw[->] (0,0,0) -- (0,0,-4) node[below left] {$\zeta$};
+
+        % draw a cylinder
+        \begin{scope}[rotate around y=-25]
+            \draw (2,2,-1) -- (2,5,-1);
+            \draw (2,2,-3) -- (2,5,-3);
+            \draw[canvas is xz plane at y=2] (2,-2) circle (1cm);
+            \draw[canvas is xz plane at y=5] (2,-2) circle (1cm);
+
+            \node at (2,3.5,-1.7) {$G$};
+
+            \draw[-latex] (2,3.5,-2) -- (2,4.5,-2) node[above] {$X$};
+            \draw[-latex] (2,3.5,-2) -- (3,3.5,-2) node[above] {$Y$};
+            \draw[-latex] (2,3.5,-2) -- (2,3.5,-3) node[below left] {$Z$};
+
+            \draw[->] (2,3.5,-2) -- (2,6.5,-2) node[above] {$x$};
+            \draw[->] (2,3.5,-2) -- (8.5,3.5,-2) node[above] {$y$};
+            \draw[->] (2,3.5,-2) -- (2,3.5,-4.5) node[below left] {$z$};
+
+            \draw[-latex] (3,3.5,-4) -- (3,3.5,-4.25);
+            \draw[-latex] (3,3.5,-4) -- (3,3.5,-3.75) node [left]{$r$};
+
+            \draw[-latex] (2,5.75,-1.75) -- (2,6,-1.75);
+            \draw[-latex] (2,5.75,-1.75) -- (2,5.5,-1.75) node[above] {$p$};
+
+            \draw[-latex] (7,3.5,-1.75) -- (6.25,3.5,-1.75);
+            \draw[-latex] (7,3.5,-1.75) -- (7.75,3.5,-1.75) node[above] {$q$};
+
+            % draw a arc with arrow
+            \draw[->] (1.5,3.5,-4) ++(0:1) arc (0:180:.5) node[above] {$3$};
+            \draw[->, canvas is xz plane at y=2] (1.5,-1.5) ++(0:1) arc (0:-180:.5) node[above] {$1$};
+            \draw[->, canvas is xz plane at y=5] (1.5,-2) ++(0:1) arc (0:180:.5) node[above] {$2$};
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+        % \begin{scope}[rotate around y=-20]
+
+
+        %     % 绘制坐标轴以辅助观察，可选
+        %     \draw[-latex,red] (-2,0,0) -- (2,0,0) node[anchor=north east,red]{$x$};
+        %     \draw[-latex,red] (0,0,-2) -- (0,0,2) node[anchor=north west,red]{$z$};
+        %     \draw[-latex,red] (0,-2,0) -- (0,2,0) node[anchor=south,red]{$y$};
+        % \end{scope}
+
+
+
+\end{document}
